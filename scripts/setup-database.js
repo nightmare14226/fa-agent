@@ -22,6 +22,12 @@ async function setupDatabase() {
       console.log('❌ pgvector extension not found')
     }
     
+    // Run migrations
+    console.log('🔄 Running database migrations...')
+    const { execSync } = require('child_process')
+    execSync('npx prisma migrate deploy', { stdio: 'inherit' })
+    console.log('✅ Database migrations completed')
+    
   } catch (error) {
     console.error('❌ Error setting up database:', error)
     throw error
