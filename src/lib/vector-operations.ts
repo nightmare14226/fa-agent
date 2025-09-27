@@ -4,7 +4,7 @@ export interface VectorSearchResult {
   id: string
   content: string
   source: string
-  metadata: any
+  metadata: Record<string, unknown>
   distance: number
 }
 
@@ -21,7 +21,7 @@ export async function searchSimilarEmbeddings(
     id: string
     content: string
     source: string
-    metadata: any
+    metadata: Record<string, unknown>
     distance: number
   }>>`
     SELECT 
@@ -47,7 +47,7 @@ export async function createEmbedding(data: {
   userId: string
   source: string
   content: string
-  metadata: any
+  metadata: Record<string, unknown>
   vector: number[]
 }) {
   // Use raw SQL to insert with vector data

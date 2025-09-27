@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createEmbedding, searchSimilarEmbeddings, getEmbeddingsByUser } from '@/lib/vector-operations'
-import { prisma } from '@/lib/prisma'
+import { createEmbedding, getEmbeddingsByUser } from '@/lib/vector-operations'
 
 // GET /api/embeddings - Get embeddings for a user
 export async function GET(request: NextRequest) {

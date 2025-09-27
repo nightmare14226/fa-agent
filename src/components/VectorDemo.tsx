@@ -6,7 +6,13 @@ export default function VectorDemo() {
   const [userId, setUserId] = useState('')
   const [content, setContent] = useState('')
   const [source, setSource] = useState('')
-  const [searchResults, setSearchResults] = useState<any[]>([])
+  const [searchResults, setSearchResults] = useState<Array<{
+    id: string
+    content: string
+    source: string
+    metadata: Record<string, unknown>
+    distance: number
+  }>>([])
   const [loading, setLoading] = useState(false)
 
   // Mock vector generation (in real app, you'd use an embedding service)
