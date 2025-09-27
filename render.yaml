@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: fa-agent
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fa-agent-db
+          property: connectionString
+    healthCheckPath: /
+
+databases:
+  - name: fa-agent-db
+    plan: free
+    databaseName: fa_agent
+    user: fa_agent_user
