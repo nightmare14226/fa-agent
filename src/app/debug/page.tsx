@@ -3,7 +3,16 @@
 import { useState } from 'react'
 
 export default function DebugPage() {
-  const [healthStatus, setHealthStatus] = useState<any>(null)
+  const [healthStatus, setHealthStatus] = useState<{
+    status: string
+    timestamp?: string
+    database?: {
+      connected: boolean
+      pgvector: boolean
+      extensionVersion?: string | null
+    }
+    error?: string
+  } | null>(null)
   const [loading, setLoading] = useState(false)
 
   const checkHealth = async () => {
