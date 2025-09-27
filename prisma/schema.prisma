@@ -1,12 +1,10 @@
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
-  provider   = "postgresql"
-  url        = env("DATABASE_URL")
-  extensions = [vector]
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -29,7 +27,7 @@ model Embedding {
   source    String
   content   String
   metadata  Json
-  vector    Vector
+  vector    Unsupported("vector")
   createdAt DateTime @default(now())
 }
 
@@ -52,5 +50,4 @@ model Memory {
   createdAt   DateTime @default(now())
 }
 
-/// pgvector extension
-type Vector @pgVector(dim: 1536)
+// pgvector extension - handled via raw SQL

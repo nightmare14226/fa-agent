@@ -50,14 +50,16 @@ export async function createEmbedding(data: {
   metadata: any
   vector: number[]
 }) {
-  return await prisma.embedding.create({
-    data: {
-      userId: data.userId,
-      source: data.source,
-      content: data.content,
-      metadata: data.metadata,
-      vector: data.vector,
-    },
+  // Use raw SQL to insert with vector data
+  const result = await prisma.$queryRaw<Array<{ id: string }>>`
+    INSERT INTO "Embedding" ("id", "userId", "source", "content", "metadata", "vector", "createdAt")
+    VALUES (gen_random_uuid(), ${data.userId}, ${data.source}, ${data.content}, ${JSON.stringify(data.metadata)}, ${JSON.stringify(data.vector)}::vector, NOW())
+    RETURNING id
+  `
+  
+  // Fetch the created embedding
+  return await prisma.embedding.findUnique({
+    where: { id: result[0].id },
   })
 }
 

@@ -20,7 +20,6 @@
     "next": "15.5.4",
     "pgvector": "^0.2.1",
     "prisma": "^5.22.0",
-    "prisma-extension-pgvector": "^0.11.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "zod": "^4.1.11"
