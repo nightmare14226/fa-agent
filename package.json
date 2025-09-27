@@ -16,9 +16,10 @@
     "db:reset": "prisma migrate reset && npm run db:setup"
   },
   "dependencies": {
-    "@prisma/client": "^6.16.2",
+    "@prisma/client": "^5.22.0",
     "next": "15.5.4",
     "pgvector": "^0.2.1",
+    "prisma": "^5.22.0",
     "prisma-extension-pgvector": "^0.11.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -32,7 +33,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "prisma": "^6.16.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
