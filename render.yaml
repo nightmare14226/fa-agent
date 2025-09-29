@@ -10,8 +10,22 @@ services:
         value: production
       - key: DATABASE_URL
         fromDatabase:
-          name: fa-agent-db
+          name: YOUR_ACTUAL_DATABASE_NAME
           property: connectionString
+      - key: NEXTAUTH_URL
+        value: https://your-app.onrender.com
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: HUBSPOT_CLIENT_ID
+        sync: false
+      - key: HUBSPOT_CLIENT_SECRET
+        sync: false
+      - key: HUBSPOT_REDIRECT_URI
+        value: https://your-app.onrender.com/api/auth/hubspot/callback
     healthCheckPath: /
 
 databases:
